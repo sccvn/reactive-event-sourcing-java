@@ -33,3 +33,18 @@ docker-compose -f docker-compose-jdbc.yml up
 ```
 ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="--enable-preview"    
 ```
+
+3. Use curl to interact with the application:
+
+```bash
+curl -XPOST -H "Content-Type: application/json" -d '{"showId":"dd062ec2-ce7b-4795-a3c8-05ec07424f2f","title":"order of pete", "maxSeats":2}' http://localhost:8080/shows
+```
+
+```bash
+curl -XGET -H "Content-Type: application/json" http://localhost:8080/shows/dd062ec2-ce7b-4795-a3c8-05ec07424f2f
+```
+
+```bash
+curl -XPATCH -H "Content-Type: application/json" -d '{"action":"RESERVE"}' http://localhost:8080/shows/dd062ec2-ce7b-4795-a3c8-05ec07424f2f/seats/0
+```
+
